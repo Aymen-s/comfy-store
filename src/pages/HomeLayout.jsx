@@ -4,7 +4,7 @@ function HomeLayout() {
   return (
     <>
       <nav>
-        <span>Comfy</span>
+        <span className="text-4xl text-primary">Comfy</span>
       </nav>
       <Outlet />
     </>
