@@ -1,5 +1,11 @@
+import { Hero } from "../components";
+
 function Landing() {
-  return <div>landing</div>;
+  return (
+    <>
+      <Hero />
+    </>
+  );
 }
 
 export default Landing;
