@@ -33,8 +33,20 @@ const cartSlice = createSlice({
 
       toast.success("Item added to cart");
     },
-    clearCart: (state) => {},
-    removeItem: (state, action) => {},
+    clearCart: (state) => {
+      localStorage.setItem("cart", JSON.stringify(defaultState));
+      return defaultState;
+    },
+    removeItem: (state, action) => {
+      const { cartID } = action.payload;
+      const product = state.cartItems.find((i) => i.cartID === cartID);
+      state.cartItems = state.cartItems.filter((i) => i.cartID !== cartID);
+      state.numItemsInCart += product.amount;
+      state.cartTotal += product.price * product.amount;
+
+      cartSlice.caseReducers.calculateTotal(state);
+      toast.error("Item removed form the cart");
+    },
     editItem: (state, action) => {},
     calculateTotal: (state) => {
       state.tax = 0.1 * state.cartTotal;
