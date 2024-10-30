@@ -38,7 +38,7 @@ function Login() {
       dispatch(loginUser(response.data));
       toast.success("welcome guest user");
       navigate("/");
-    } catch (error) {
+    } catch {
       toast.error("guest user login error. please try again");
     }
   };
